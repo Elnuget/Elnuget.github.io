@@ -1,0 +1,60 @@
+{
+    "calendar": {
+    "element": ".calendar"
+    },
+    "date": {
+    "element": ".date"
+    },
+    "daysContainer": {
+    "element": ".days"
+    },
+    "prev": {
+    "element": ".prev"
+    },
+    "next": {
+    "element": ".next"
+    },
+    "todayBtn": {
+    "element": ".today-btn"
+    },
+    "gotoBtn": {
+    "element": ".goto-btn"
+    },
+    "dateInput": {
+    "element": ".date-input"
+    },
+    "eventDay": {
+    "element": ".event-day"
+    },
+    "eventDate": {
+    "element": ".event-date"
+    },
+    "eventsContainer": {
+    "element": ".events"
+    },
+    "addEventBtn": {
+    "element": ".add-event"
+    },
+    "addEventWrapper": {
+    "element": ".add-event-wrapper"
+    },
+    "addEventCloseBtn": {
+    "element": ".close"
+    },
+    "addEventTitle": {
+    "element": ".event-name"
+    },
+    "addEventFrom": {
+    "element": ".event-time-from"
+    },
+    "addEventTo": {
+    "element": ".event-time-to"
+    },
+    "addEventSubmit": {
+    "element": ".add-event-btn"
+    }
+    }
+    
+    
+    
+    
