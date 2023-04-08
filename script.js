@@ -37,27 +37,41 @@ const months = [
   "December",
 ];
 
-// const eventsArr = [
-//   {
-//     day: 13,
-//     month: 11,
-//     year: 2022,
-//     events: [
-//       {
-//         title: "Event 1 lorem ipsun dolar sit genfa tersd dsad ",
-//         time: "10:00 AM",
-//       },
-//       {
-//         title: "Event 2",
-//         time: "11:00 AM",
-//       },
-//     ],
-//   },
-// ];
+eventsArr = [
+  {
+    day: 13,
+    month: 04,
+    year: 2023,
+    events: [
+      {
+        title: "Event 1 lorem ipsun dolar sit genfa tersd dsad ",
+        time: "10:00 AM",
+      },
+      {
+        title: "Event 2",
+        time: "11:00 AM",
+      },
+    ],
+  },
+  {
+   day: 12,
+   month: 04,
+   year: 2023,
+   events: [
+     {
+       title: "Event 1 lorem ipsun dolar sit genfa tersd dsad ",
+       time: "10:00 AM",
+     },
+     {
+       title: "Event 2",
+       time: "11:00 AM",
+     },
+   ],
+ }
+];
 
-const eventsArr = [];
-getEvents();
-console.log(eventsArr);
+
+
 
 //function to add days in days with class day and prev-date next-date on previous month and next month days and active on today
 function initCalendar() {
@@ -291,7 +305,7 @@ addEventTitle.addEventListener("input", (e) => {
 function defineProperty() {
   var osccred = document.createElement("div");
   osccred.innerHTML =
-    "Agenda :)";
+    "A Project By <a href='https://www.youtube.com/channel/UCiUtBDVaSmMGKxg1HYeK-BQ' target=_blank>Open Source Coding</a>";
   osccred.style.position = "absolute";
   osccred.style.bottom = "0";
   osccred.style.right = "0";
@@ -452,7 +466,23 @@ eventsContainer.addEventListener("click", (e) => {
 
 //function to save events in local storage
 function saveEvents() {
-  localStorage.setItem("events", JSON.stringify(eventsArr));
+  
+  fetch('https://general-2e89b-default-rtdb.firebaseio.com/eventsArr.json', {
+    method: 'PUT',
+    body: JSON.stringify(eventsArr),
+    headers: {
+      'Content-Type': 'application/json'
+    }
+  })
+  .then(response => {
+    if (!response.ok) {
+      throw new Error('Network response was not ok');
+    }
+    console.log('Events saved to REST API');
+  })
+  .catch(error => {
+    console.error('There was a problem saving events to REST API:', error);
+  });
 }
 
 //function to get events from local storage
