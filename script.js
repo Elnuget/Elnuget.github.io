@@ -38,41 +38,13 @@ const months = [
 ];
 
 eventsArr = [
-  {
-    day: 13,
-    month: 04,
-    year: 2023,
-    events: [
-      {
-        title: "Event 1 lorem ipsun dolar sit genfa tersd dsad ",
-        time: "10:00 AM",
-      },
-      {
-        title: "Event 2",
-        time: "11:00 AM",
-      },
-    ],
-  },
-  {
-   day: 12,
-   month: 04,
-   year: 2023,
-   events: [
-     {
-       title: "Event 1 lorem ipsun dolar sit genfa tersd dsad ",
-       time: "10:00 AM",
-     },
-     {
-       title: "Event 2",
-       time: "11:00 AM",
-     },
-   ],
- }
+  
 ];
 
+getEvents();
 
 
-
+//function to add days in days with class day and prev-date next-date on previous month and next month days and active on today
 //function to add days in days with class day and prev-date next-date on previous month and next month days and active on today
 function initCalendar() {
   const firstDay = new Date(year, month, 1);
@@ -130,6 +102,26 @@ function initCalendar() {
   }
   daysContainer.innerHTML = days;
   addListner();
+}
+
+//get events from api
+async function getEvents() {
+  const response = await fetch("https://general-2e89b-default-rtdb.firebaseio.com/eventsArr.json");
+  const data = await response.json();
+  console.log(data);
+  data.forEach((eventObj) => {
+    const event = {
+      day: eventObj.day,
+      month: eventObj.month,
+      year: eventObj.year,
+      events: eventObj.events.map((e) => ({
+        title: e.title,
+        time: e.time,
+      })),
+    };
+    eventsArr.push(event);
+  });
+  initCalendar();
 }
 
 //function to add month and year on prev and next button
@@ -485,14 +477,7 @@ function saveEvents() {
   });
 }
 
-//function to get events from local storage
-function getEvents() {
-  //check if events are already saved in local storage then return event else nothing
-  if (localStorage.getItem("events") === null) {
-    return;
-  }
-  eventsArr.push(...JSON.parse(localStorage.getItem("events")));
-}
+
 
 function convertTime(time) {
   //convert time to 24 hour format
