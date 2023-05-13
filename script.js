@@ -104,6 +104,27 @@ function initCalendar() {
   addListner();
 }
 
+function movePastEventsToToday() {
+  const todayDate = new Date();
+  const todayDay = todayDate.getDate();
+  const todayMonth = todayDate.getMonth();
+  const todayYear = todayDate.getFullYear();
+  eventsArr.forEach((eventObj) => {
+    if (
+      eventObj.year <= todayYear &&
+      eventObj.month - 1 <= todayMonth &&
+      eventObj.day < todayDay
+    ) {
+      eventObj.day = todayDay;
+      eventObj.month = todayMonth + 1;
+      eventObj.year = todayYear;
+      saveEvents();
+    }
+  });
+  initCalendar();
+}
+
+
 //get events from api
 async function getEvents() {
   const response = await fetch("https://general-2e89b-default-rtdb.firebaseio.com/eventsArr.json");
@@ -121,8 +142,10 @@ async function getEvents() {
     };
     eventsArr.push(event);
   });
+  movePastEventsToToday(); // Call movePastEventsToToday function
   initCalendar();
 }
+
 
 //function to add month and year on prev and next button
 function prevMonth() {
@@ -476,7 +499,6 @@ function saveEvents() {
     console.error('There was a problem saving events to REST API:', error);
   });
 }
-
 
 
 function convertTime(time) {
