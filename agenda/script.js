@@ -501,8 +501,6 @@ function saveEvents() {
 }
 
 
-
-
 function convertTime(time) {
   //convert time to 24 hour format
   let timeArr = time.split(":");
