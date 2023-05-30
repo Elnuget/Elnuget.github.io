@@ -8,37 +8,13 @@
     <link rel="icon" type="image/png" href="carpincho.png">
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
-</head>
-<body>
-
-    <div class="contador-circular">
-        <div id="contador">0</div>
-    </div>
-    
-    <div class="floating-buttons">
-        <button id="button1">
-            <a href="CV_Carlos_Angulo.pdf" >
-                <i class="fas fa-file-pdf"></i> Hoja de vida
-            </a>
-        </button>
-        <button id="button2">
-            <a href="https://angulocarlos.com/agenda/" >
-                <i class="fas fa-calendar-alt"></i> Agenda
-            </a>
-        </button>
-        <button id="button3">
-            <a href="https://angulocarlos.com/Exoplanetas/" >
-                <i class="fas fa-globe"></i> Exoplanetas
-            </a>
-        </button>
-        <button id="button4">
-            <a href="https://angulocarlos.com/logros/" >
-                <i class="fas fa-star"></i> logros
-            </a>
-        </button>
-    </div>
-
     <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        
         .contador-circular {
             position: fixed;
             bottom: 20px;
@@ -72,7 +48,9 @@
         }
         
         .floating-buttons button {
-            display: block;
+            display: flex;
+            align-items: center;
+            justify-content: center;
             padding: 10px 20px;
             border-radius: 5px;
             background-color: #00BCD4;
@@ -82,9 +60,50 @@
             cursor: pointer;
             flex: 1 0 200px;
             max-width: 200px;
+            border: none;
+            text-decoration: none;
+        }
+
+        .floating-buttons button a {
+            text-decoration: none;
+            color: white;
+            display: flex;
+            align-items: center;
+        }
+
+        .floating-buttons button i {
+            margin-right: 5px;
         }
     </style>
+</head>
+<body>
+    <div class="contador-circular">
+        <div id="contador">0</div>
+    </div>
     
+    <div class="floating-buttons">
+        <button id="button1">
+            <a href="CV_Carlos_Angulo.pdf">
+                <i class="fas fa-file-pdf"></i> Hoja de vida
+            </a>
+        </button>
+        <button id="button2">
+            <a href="https://angulocarlos.com/agenda/">
+                <i class="fas fa-calendar-alt"></i> Agenda
+            </a>
+        </button>
+        <button id="button3">
+            <a href="https://angulocarlos.com/Exoplanetas/">
+                <i class="fas fa-globe"></i> Exoplanetas
+            </a>
+        </button>
+        <button id="button4">
+            <a href="https://angulocarlos.com/logros/">
+                <i class="fas fa-star"></i> Logros
+            </a>
+        </button>
+    </div>
+
     <script src="app.js"></script>
     <script src="script.js"></script>
     <script>
@@ -110,6 +129,22 @@
                 .then(response => console.log(response))
                 .catch(error => console.error(error));
         }
+
+        document.getElementById("button1").addEventListener("click", function() {
+            window.location.href = "CV_Carlos_Angulo.pdf";
+        });
+
+        document.getElementById("button2").addEventListener("click", function() {
+            window.location.href = "https://angulocarlos.com/agenda/";
+        });
+
+        document.getElementById("button3").addEventListener("click", function() {
+            window.location.href = "https://angulocarlos.com/Exoplanetas/";
+        });
+
+        document.getElementById("button4").addEventListener("click", function() {
+            window.location.href = "https://angulocarlos.com/logros/";
+        });
     </script>
 </body>
 </html>
