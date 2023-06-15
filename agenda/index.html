@@ -27,6 +27,9 @@
     <div class="contador-circular">
 			<div id="contador">0</div>
 		  </div>
+      <div class="contador-estrella">
+        <div id="contador1">0</div>
+    </div>
 		  <style>
 			.contador-circular {
 			  position: fixed;
@@ -41,11 +44,31 @@
 			  display: flex;
 			  justify-content: center;
 			  align-items: center;
-			  font-size: 24px;
+			  font-size: 20px;
 			  font-weight: bold;
 			  cursor: pointer;
 			  z-index: 9999;
 			}
+      .contador-estrella {
+        position: fixed;
+        bottom: 20px;
+        left: 20px;
+        width: 85px; /* Aumentamos el tamaño de la estrella */
+        height: 85px; /* Aumentamos el tamaño de la estrella */
+        border-radius: 50%;
+        background-color: yellow;
+        color: black;
+        text-align: center;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 20px;
+        font-weight: bold;
+        cursor: pointer;
+        z-index: 9999;
+        /* Forma de estrella */
+        clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+    }
 		  </style>
     <div class="container">
       <div class="left">
@@ -119,29 +142,31 @@
     <script src="script.js"></script>
     <script>
 				
-			let url = 'https://general-2e89b-default-rtdb.firebaseio.com/index.json'; 
-			let contador = 0;
+        let url = 'https://general-2e89b-default-rtdb.firebaseio.com/index.json';
+        let contador = 0;
+        let contador1 = 0;
 
-			fetch(url)
-			.then(response => response.json())
-			.then(data => {
-				contador = data.contador;
-				document.getElementById('contador').innerHTML = contador;
-				aumentar(); // Llama a la función para incrementar el contador en 1
-			})
-			.catch(error => console.error(error));
+        fetch(url)
+        .then(response => response.json())
+        .then(data => {
+            contador = data.contador;
+            contador1 = data.contador1;
+            document.getElementById('contador').innerHTML = contador;
+            document.getElementById('contador1').innerHTML = contador1;
+            aumentar(); // Llama a la función para incrementar el contador en 1
+        })
+        .catch(error => console.error(error));
 
-			function aumentar() {
-			contador++;
-			document.getElementById('contador').innerHTML = contador;
-			fetch(url, {
-				method: 'PUT',
-				body: JSON.stringify({ contador: contador })
-			})
-				.then(response => console.log(response))
-				.catch(error => console.error(error));
-			}
-
+        function aumentar() {
+        contador++;
+        document.getElementById('contador').innerHTML = contador;
+        fetch(url, {
+            method: 'PUT',
+            body: JSON.stringify({ contador: contador, contador1: contador1 })
+        })
+            .then(response => console.log(response))
+            .catch(error => console.error(error));
+        }
 		
 				</script>
   </body>

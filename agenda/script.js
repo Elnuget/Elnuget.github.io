@@ -447,10 +447,10 @@ addEventSubmit.addEventListener("click", () => {
   }
 });
 
-//function to delete event when clicked on event
+// Función para eliminar un evento cuando se hace clic en él
 eventsContainer.addEventListener("click", (e) => {
   if (e.target.classList.contains("event")) {
-    if (confirm("Are you sure you want to delete this event?")) {
+    if (confirm("¿Estás seguro de que quieres eliminar este evento?")) {
       const eventTitle = e.target.children[0].children[1].innerHTML;
       eventsArr.forEach((event) => {
         if (
@@ -463,10 +463,10 @@ eventsContainer.addEventListener("click", (e) => {
               event.events.splice(index, 1);
             }
           });
-          //if no events left in a day then remove that day from eventsArr
+          // Si no quedan eventos en un día, eliminar ese día de eventsArr
           if (event.events.length === 0) {
             eventsArr.splice(eventsArr.indexOf(event), 1);
-            //remove event class from day
+            // Quitar la clase "event" del día
             const activeDayEl = document.querySelector(".day.active");
             if (activeDayEl.classList.contains("event")) {
               activeDayEl.classList.remove("event");
@@ -474,10 +474,42 @@ eventsContainer.addEventListener("click", (e) => {
           }
         }
       });
+
+      // Actualizar los eventos y aumentar el contador1
       updateEvents(activeDay);
+      incrementCounter1();
     }
   }
 });
+
+function incrementCounter1() {
+  let url = 'https://general-2e89b-default-rtdb.firebaseio.com/index.json';
+        let contador = 0;
+        let contador1 = 0;
+
+        fetch(url)
+        .then(response => response.json())
+        .then(data => {
+            contador = data.contador;
+            contador1 = data.contador1;
+            document.getElementById('contador').innerHTML = contador;
+            document.getElementById('contador1').innerHTML = contador1;
+            aumentar(); // Llama a la función para incrementar el contador en 1
+        })
+        .catch(error => console.error(error));
+
+        function aumentar() {
+        contador1++;
+        document.getElementById('contador1').innerHTML = contador1;
+        fetch(url, {
+            method: 'PUT',
+            body: JSON.stringify({ contador: contador, contador1: contador1 })
+        })
+            .then(response => console.log(response))
+            .catch(error => console.error(error));
+        }
+}
+
 
 //function to save events in local storage
 function saveEvents() {
