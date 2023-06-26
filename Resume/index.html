@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Hoja de Vida</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" type="text/css" href="styles.css">
+	<script src="https://kit.fontawesome.com/b99e675b6e.js"></script>
+</head>
+<body>
+
+	<div class="contador-circular">
+		<i class="fas fa-eye"></i>
+		<div id="contador">0</div>
+	  </div>
+	  <div class="contador-estrella">
+		<i class="fas fa-star"></i>
+		<div id="contador1">0</div>
+	  </div>
+	  <button class="btn Volver" onclick="redireccionar()">
+		<div id="Volver">
+		  <span class="arrow">&#8592;</span> Volver
+		</div>
+	  </button>
+	  
+	  <style>
+		.contador-circular {
+		  position: fixed;
+		  bottom: 20px;
+		  right: 20px;
+		  width: 60px;
+		  height: 60px;
+		  border-radius: 50%;
+		  background-color: rgb(83, 109, 254);
+		  color: white;
+		  text-align: center;
+		  display: flex;
+		  justify-content: center;
+		  align-items: center;
+		  font-size: 16px;
+		  font-weight: bold;
+		  cursor: pointer;
+		  z-index: 9999;
+		  transition: background-color 0.3s ease;
+		}
+	  
+		.contador-circular:hover {
+		  background-color: rgb(55, 91, 215);
+		}
+	  
+		.contador-estrella {
+		  position: fixed;
+		  bottom: 10px;
+		  left: 10px;
+		  width: 70px;
+		  height: 70px;
+		  border-radius: 10px;
+		  background-color: rgb(244, 170, 66);
+		  color: rgb(100, 99, 99);
+		  text-align: center;
+		  display: flex;
+		  justify-content: center;
+		  align-items: center;
+		  font-size: 14px;
+		  font-weight: bold;
+		  cursor: pointer;
+		  z-index: 9999;
+		  transition: background-color 0.3s ease;
+		}
+	  
+		.contador-estrella:hover {
+		  background-color: rgb(225, 151, 51);
+		}
+	  
+		.btn.Volver {
+		  position: fixed;
+		  top: 10px;
+		  left: 20px;
+		  padding: 8px;
+		  background-color: rgb(243, 108, 108);
+		  color: white;
+		  text-align: center;
+		  display: flex;
+		  justify-content: center;
+		  align-items: center;
+		  font-size: 18px;
+		  font-weight: bold;
+		  cursor: pointer;
+		  z-index: 9999;
+		  border-radius: 12px;
+		  transition: background-color 0.3s ease;
+		}
+	  
+		.btn.Volver:hover {
+		  background-color: rgb(226, 80, 80);
+		}
+	  
+		.btn.Volver .arrow {
+		  display: inline-block;
+		  margin-right: 5px;
+		}
+	  </style>
+	  
+<div class="resume_wrapper">
+	<div class="resume_left">
+		<div class="resume_image">
+			<img src="pic.jpg" alt="Resume_image">
+		</div>
+		<div class="resume_bottom">
+			<div class="resume_item resume_namerole">
+				<div class="name">Carlos Angulo</div>
+				<div class="role">Full Stack Web Developer</div>
+			  </div>
+			  <div class="resume_item resume_profile">
+				<div class="resume_title">Perfil</div>
+				<div class="resume_info">Soy un apasionado de la programación con experiencia en matemáticas, física y diseño de interfaces de usuario. Mi objetivo es combinar mis habilidades técnicas y creativas para desarrollar soluciones web innovadoras y atractivas para empresas. Estoy dedicado a aprender y mantenerme actualizado con las últimas tecnologías y tendencias en desarrollo web. Soy un colaborador proactivo, capaz de trabajar en equipo y con una mentalidad orientada a los resultados.</div>
+			  </div>
+			<div class="resume_item resume_address">
+				<div class="resume_title">Dirección</div>
+				<div class="resume_info">
+					Santo Tomas,<br/>
+					Guamaní,<br/>
+					Quito, Ecuador
+				</div>
+			</div>
+			<div class="resume_item resume_contact">
+				<div class="resume_title">Contacto</div>
+				
+					<div class="resume_info">
+						<div class="resume_subtitle">Celular</div>
+						<div class="resume_subinfo"><a href="https://wa.me/0983468115" target="_blank" class="contact_link">0983468115</a></div>
+					</div>
+					<div class="resume_info">
+						<div class="resume_subtitle">Correo</div>
+						<div class="resume_subinfo"><a href="mailto:cangulo009@outlook.es" class="contact_link">cangulo009@outlook.es</a></div>
+					</div>
+					<div class="resume_info">
+						<div class="resume_subtitle">Página Web</div>
+						<div class="resume_subinfo"><a href="https://angulocarlos.com/" target="_blank" class="contact_link">https://angulocarlos.com/</a></div>
+					</div>
+			  </div>
+			<div class="resume_item resume_skills">
+				<div class="resume_title">Habilidades</div>
+				<div class="resume_info">
+					<div class="skills_list">
+						<div class="skills_left">HTML</div>
+						<div class="skills_bar">
+							<p>
+								<span style="width: 90%"></span>
+							</p>
+						</div>
+					</div>
+					<div class="skills_list">
+						<div class="skills_left">CSS</div>
+						<div class="skills_bar">
+							<p>
+								<span style="width: 80%"></span>
+							</p>
+						</div>
+					</div>
+					<div class="skills_list">
+						<div class="skills_left">Javascript</div>
+						<div class="skills_bar">
+							<p>
+								<span style="width: 100%"></span>
+							</p>
+						</div>
+					</div>
+					<div class="skills_list">
+						<div class="skills_left">Python</div>
+						<div class="skills_bar">
+							<p>
+								<span style="width: 60%"></span>
+							</p>
+						</div>
+					</div>
+					<div class="skills_list">
+						<div class="skills_left">Java</div>
+						<div class="skills_bar">
+							<p>
+								<span style="width: 70%"></span>
+							</p>
+						</div>
+					</div>
+					<div class="skills_list">
+						<div class="skills_left">C#</div>
+						<div class="skills_bar">
+							<p>
+								<span style="width: 80%"></span>
+							</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="resume_right">
+		<div class="resume_item resume_namerole">
+			<div class="name">Carlos Angulo</div>
+			<div class="role">Full Stack Web Developer</div>
+		</div>
+		<div class="resume_item resume_education">
+			<div class="resume_item resume_education">
+				<div class="resume_title">Educación</div>
+				<div class="resume_info">
+					<div class="resume_data">
+						<div class="year">2005 - 2012</div>
+						<div class="content">
+							<p>Escuela Valencia Herrera</p>
+							<p>Diploma de Grado - Segundo Escolta de la Bandera</p>
+						</div>
+					</div>
+					<div class="resume_data">
+						<div class="year">2012 - 2018</div>
+						<div class="content">
+							<p>Instituto Tecnológico Sucre</p>
+							<p>Colegio Ricardo Cornejo</p>
+							<p>Título de Bachiller en Ciencias</p>
+						</div>
+					</div>
+					<div class="resume_data">
+						<div class="year">2018 - 2023</div>
+						<div class="content">
+							<p>Universidad Central del Ecuador</p>
+							<p>Carrera de Pedagogía de las Ciencias Experimentales - Matemática y Física</p>
+							<p>Título de Licenciado Físico Matemático</p>
+						</div>
+					</div>
+					<div class="resume_data">
+						<div class="year">2020 - 2023</div>
+						<div class="content">
+							<p>Instituto Tecnológico Vida Nueva</p>
+							<p>Carrera de Tecnología Superior en Desarrollo de Software</p>
+							<p>Título de Tecnólogo en Desarrollo de Software</p>
+						</div>
+					</div>
+				</div>
+			</div>
+			
+		</div>
+		<div class="resume_item resume_experience">
+			<div class="resume_title">Experiencia</div>
+			<div class="resume_info">
+				<div class="resume_data">
+					<div class="year">May. 2022 – Oct. 2022</div>
+					<div class="content">
+						<p>Proyecto Transformar, UCE</p>
+						<p>Monitor en el Dominio Numérico</p>
+						<p>Monitor en el dominio numérico para estudiantes de 3ro de bachillerato para rendir el examen Transformar para el acceso a la Educación Superior a través de plataformas digitales.</p>
+					</div>
+				</div>
+				<div class="resume_data">
+					<div class="year">OCTUBRE 2021 - MARZO 2022</div>
+					<div class="content">
+						<p>Unidad Educativa Municipal Fernández Madrid</p>
+						<p>Docente practicante de Matemática</p>
+						<p>Docente practicante en el nivel de Bachillerato en el 1ro BGU, 2do BGU y 3ro BGU en la asignatura de matemática.</p>
+					</div>
+				</div>
+				<div class="resume_data">
+					<div class="year">ABRIL 2022 - SEPTIEMBRE 2022</div>
+					<div class="content">
+						<p>Unidad Educativa Municipal Quitumbe</p>
+						<p>Docente practicante de Matemática</p>
+						<p>Docente practicante en el nivel de Bachillerato en el 1ro BGU, 2do BGU y 3ro BGU en la asignatura de matemática.</p>
+					</div>
+				</div>
+				<div class="resume_data">
+					<div class="year">OCTUBRE 2022 - MARZO 2023</div>
+					<div class="content">
+						<p>Unidad Educativa Julio Tobar Donoso</p>
+						<p>Docente practicante de Matemática</p>
+						<p>Docente practicante en el nivel de Bachillerato en el 1ro BGU, 2do BGU y 3ro BGU en la asignatura de matemática.</p>
+					</div>
+				</div>
+				<div class="resume_data">
+					<div class="year">2023 - 2023</div>
+					<div class="content">
+						<p>Empresa TRT Roat Trips</p>
+						<p>Desarrollador de Software</p>
+						<p>Trabajo como desarrollador de software en la empresa TRT Roat Trips.</p>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		<div class="resume_item resmue_interests">
+			<div class="resume_title">Intereses</div>
+			<div class="resume_info">
+				<div class="interests">
+					<div class="int_icon">
+						<i class="fas fa-volleyball-ball"></i>
+					</div>
+					<div class="int_data">Volleyball</div>
+				</div>
+				<div class="interests">
+					<div class="int_icon">
+						<i class="fas fa-book-open"></i>
+					</div>
+					<div class="int_data">Leer</div>
+				</div>
+				<div class="interests">
+					<div class="int_icon">
+						<i class="fas fa-film"></i>
+					</div>
+					<div class="int_data">Películas</div>
+				</div>
+				<div class="interests">
+					<div class="int_icon">
+						<i class="fas fa-biking"></i>
+					</div>
+					<div class="int_data">Ciclismo</div>
+				</div>
+				<div class="interests">
+					<div class="int_icon">
+						<i class="fas fa-chess"></i>
+					</div>
+					<div class="int_data">Ajedrez</div>
+				</div>
+				<div class="interests">
+					<div class="int_icon">
+						<i class="fas fa-dumbbell"></i>
+					</div>
+					<div class="int_data">Gimnasio</div>
+				</div>
+			</div>
+		</div>
+		
+	</div>
+</div>
+<script>
+				
+	let url = 'https://general-2e89b-default-rtdb.firebaseio.com/index.json';
+	let contador = 0;
+	let contador1 = 0;
+
+	fetch(url)
+	.then(response => response.json())
+	.then(data => {
+		contador = data.contador;
+		contador1 = data.contador1;
+		document.getElementById('contador').innerHTML = contador;
+		document.getElementById('contador1').innerHTML = contador1;
+		aumentar(); // Llama a la función para incrementar el contador en 1
+	})
+	.catch(error => console.error(error));
+
+	function aumentar() {
+	contador++;
+	document.getElementById('contador').innerHTML = contador;
+	fetch(url, {
+		method: 'PUT',
+		body: JSON.stringify({ contador: contador, contador1: contador1 })
+	})
+		.then(response => console.log(response))
+		.catch(error => console.error(error));
+	}
+	function redireccionar() {
+	window.location.href = 'https://angulocarlos.com/';
+	}
+
+	
+			</script>
+</body>
+</html>
