@@ -1,5 +1,5 @@
 :root {
-  --primary-clr: #b38add;
+  --primary-clr: #8a8fdd;
 }
 * {
   margin: 0;
@@ -546,7 +546,7 @@ body {
   padding: 10px;
   font-size: 12px;
   color: #fff;
-  background-color: #b38add;
+  background-color: #8a8bdd;
 }
 .credits a {
   color: #fff;
