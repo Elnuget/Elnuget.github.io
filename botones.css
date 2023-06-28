@@ -1,0 +1,94 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+.contador-circular {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background-color: rgb(83, 109, 254);
+  color: white;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  z-index: 9999;
+  transition: background-color 0.3s ease;
+}
+
+.contador-circular:hover {
+  background-color: rgb(55, 91, 215);
+}
+
+.contador-estrella {
+  position: fixed;
+  bottom: 10px;
+  left: 10px;
+  width: 70px;
+  height: 70px;
+  border-radius: 10px;
+  background-color: rgb(244, 170, 66);
+  color: rgb(100, 99, 99);
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 14px;
+  font-weight: bold;
+  cursor: pointer;
+  z-index: 9999;
+  transition: background-color 0.3s ease;
+}
+
+.contador-estrella:hover {
+  background-color: rgb(225, 151, 51);
+}
+
+.floating-buttons {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 9999;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+.floating-buttons button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 20px;
+    border-radius: 5px;
+    background-color: #00BCD4;
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    flex: 1 0 200px;
+    max-width: 200px;
+    border: none;
+    text-decoration: none;
+}
+
+.floating-buttons button a {
+    text-decoration: none;
+    color: white;
+    display: flex;
+    align-items: center;
+}
+
+.floating-buttons button i {
+    margin-right: 5px;
+}
