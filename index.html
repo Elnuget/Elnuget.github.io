@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Carlos Angulo - Portafolio</title>
+        <link rel="icon" type="image/png" href="fractal.png">
+        <link rel="stylesheet" href="style.css">
+        <link rel="stylesheet" href="botones.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+        <meta name="description" content="Soy un programador con título en Física Matemática. En este portafolio, puedes explorar todos mis proyectos y ver mi experiencia en desarrollo de software, aplicaciones web y análisis de datos.">
+        <meta name="keywords" content="programador, desarrollo de software, aplicaciones web, análisis de datos, proyectos, Física Matemática, programación, portafolio">
+    </head>
+<body>
+    <button class="btn info" onclick="openModal()">
+        <div id="Volver">
+            <i class="fas fa-user"></i> Info
+        </div>
+    </button>
+  
+
+    <div id="myModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <h3>Bienvenido a mi portafolio</h3>
+            
+                <div class="slide">
+                    <img src="modal1.jpg" alt="img">
+                    <div class="caption">
+                        <p>¡Hola! Soy Carlos Angulo, un apasionado del desarrollo web. Estoy constantemente aprendiendo y actualizándome en las últimas tecnologías y prácticas en este campo.</p>
+                        <p>Ofrezco servicios personalizados para crear sitios web modernos y funcionales, adaptados a las necesidades únicas de cada cliente. A través de mi experiencia, puedo brindar soluciones efectivas y creativas para tus proyectos.</p>
+                        <p>Además, como profesor de matemáticas y física, puedo ayudarte a comprender y mejorar tus habilidades en estas áreas.</p>
+                        <h4>¡Contáctame y comencemos a trabajar juntos en tu próximo proyecto!</h4>
+                    </div>
+                </div>
+                
+        </div>
+    </div>
+    
+    <div class="contador-circular">
+		<i class="fas fa-eye"></i>
+		<div id="contador">0</div>
+	  </div>
+	  <div class="contador-estrella">
+		<i class="fas fa-star"></i>
+		<div id="contador1">0</div>
+	  </div>
+	  
+    
+    <div class="floating-buttons">
+        <button id="button1">
+            <a href="https://angulocarlos.com/Resume/">
+                <i class="fas fa-file-pdf"></i> Hoja de vida
+            </a>
+        </button>
+        <button id="button2">
+            <a href="https://angulocarlos.com/agenda/">
+                <i class="fas fa-calendar-alt"></i> Agenda
+            </a>
+        </button>
+        <button id="button3">
+            <a href="https://angulocarlos.com/Exoplanetas/">
+                <i class="fas fa-globe"></i> Exoplanetas
+            </a>
+        </button>
+        <button id="button4">
+            <a href="https://roadtrt.com/">
+                <i class="fas fa-car"></i> Road Trips
+            </a>
+        </button>
+        
+    </div>
+
+    <script src="app.js"></script>
+    <script src="botones.js"></script>
+</body>
+</html>
