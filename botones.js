@@ -25,7 +25,7 @@ let url = 'https://general-2e89b-default-rtdb.firebaseio.com/index.json';
         }
 
         document.getElementById("button1").addEventListener("click", function() {
-            window.location.href = "CV_Carlos_Angulo.pdf";
+            window.location.href = "https://angulocarlos.com/Resume/";
         });
 
         document.getElementById("button2").addEventListener("click", function() {
@@ -35,3 +35,26 @@ let url = 'https://general-2e89b-default-rtdb.firebaseio.com/index.json';
         document.getElementById("button3").addEventListener("click", function() {
             window.location.href = "https://angulocarlos.com/Exoplanetas/";
         });
+
+        document.getElementById("button4").addEventListener("click", function() {
+            window.location.href = "https://roadtrt.com/";
+        });
+
+        function openModal() {
+            // Ocultar los botones al abrir el modal
+            var buttons = document.getElementsByClassName("floating-buttons")[0];
+            buttons.style.display = "none";
+        
+            // Mostrar el modal
+            document.getElementById("myModal").style.display = "block";
+        }
+        
+        function closeModal() {
+            // Mostrar los botones al cerrar el modal
+            var buttons = document.getElementsByClassName("floating-buttons")[0];
+            buttons.style.display = "flex";
+        
+            // Cerrar el modal
+            document.getElementById("myModal").style.display = "none";
+        }
+        
