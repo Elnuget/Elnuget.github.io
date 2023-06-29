@@ -1,0 +1,108 @@
+canvas#photoelectric-effect-animation {
+    width: 625px;
+    height: 496px;
+    background-image: url('../i/scheme-flat-no-battery.svg');
+    background-size: 625px 496px;
+    margin-bottom: 1em;
+}
+
+#spectrum, #intensity, #potential {
+    width: 640px;
+    margin: 0 auto;
+    clear: both;
+    height: 100px;
+
+}
+#intensity {
+    height: 60px;
+    margin-bottom: 1em;
+}
+
+.slider {
+    width: 400px;
+}
+
+.slider-group {
+    width: 400px;
+    display: inline-block;
+    float: left;
+}
+#spectrum  #waves {
+    width: 400px;
+    display: inline-block;
+}
+
+#spectrum #waves .uv, #spectrum #waves .ir {
+    float: left;
+    border:solid 1px #b7c4c8;
+    height: 50px;
+    line-height: 50px;
+}
+
+#spectrum #waves .uv {
+    border-right: 0;
+    width: 91px;
+}
+#spectrum #waves .ir {
+    border-left: 0;
+    width: 117px;
+}
+#spectrum #waves .visible {
+    width: 189px;
+    display: inline-block;
+    background-image: url('../i/spectrum.png');
+    background-size: 189px;
+    height: 50px;
+    float: left;
+    border: solid 1px #b7c4c8;
+    border-left: 0;
+}
+
+
+#chart-section {
+    text-align: left;
+}
+
+canvas#chart {
+}
+
+#chart-section .chart-group {
+    margin: 0 auto;
+    width: 600px;
+}
+
+#chart-section #xaxis-label {
+    clear: both;
+    text-align: center;
+}
+
+#chart-section #yaxis-label {
+    float: left;
+    width: 100px;
+}
+
+#chart-section #chart {
+    float: left;
+    width: 400px;
+    height: 300px;
+}
+
+
+@media print {
+    section#photon-energy, section#ec-max, section#chart-section {
+        display: none;
+        margin: 0;
+        padding: 0;
+        height: 0;
+    }
+
+    div#info {
+        display: block;
+    }
+
+    section#main-animation, aside {
+        display: none;
+    }
+
+
+}
