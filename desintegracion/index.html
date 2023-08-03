@@ -1,0 +1,583 @@
+<!DOCTYPE html>
+<!--
+	Stellar by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+  <head>
+    <title>Desintegración Radiactiva</title>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, user-scalable=no"
+    />
+    <meta
+      name="description"
+      content="Explora la desintegración radiactiva de átomos en tiempo real con nuestro simulador interactivo."
+    />
+    <link rel="stylesheet" href="assets/css/main.css" />
+    <noscript
+      ><link rel="stylesheet" href="assets/css/noscript.css"
+    /></noscript>
+    <!-- Agrega aquí el enlace al favicon -->
+    <link rel="icon" type="image/png" href="images/atomo.png" />
+  </head>
+
+  <body class="is-preload">
+	<div class="contador-circular">
+		<i class="fas fa-eye"></i>
+		<div id="contador">0</div>
+		</div>
+		<div class="contador-estrella">
+		<i class="fas fa-star"></i>
+		<div id="contador1">0</div>
+		</div>
+		<button class="btn Volver" onclick="redireccionar()">
+		<div id="Volver">
+		  <span class="arrow">&#8592;</span> Volver
+		</div>
+		</button>
+		
+		<style>
+		.contador-circular {
+		  position: fixed;
+		  bottom: 20px;
+		  right: 20px;
+		  width: 60px;
+		  height: 60px;
+		  border-radius: 50%;
+		  background-color: rgb(83, 109, 254);
+		  color: white;
+		  text-align: center;
+		  display: flex;
+		  justify-content: center;
+		  align-items: center;
+		  font-size: 16px;
+		  font-weight: bold;
+		  cursor: pointer;
+		  z-index: 9999;
+		  transition: background-color 0.3s ease;
+		  display: none;
+		}
+		
+		.contador-circular:hover {
+		  background-color: rgb(55, 91, 215);
+		}
+		
+		.contador-estrella {
+		  position: fixed;
+		  bottom: 10px;
+		  left: 10px;
+		  width: 70px;
+		  height: 70px;
+		  border-radius: 10px;
+		  background-color: rgb(244, 170, 66);
+		  color: rgb(100, 99, 99);
+		  text-align: center;
+		  display: flex;
+		  justify-content: center;
+		  align-items: center;
+		  font-size: 14px;
+		  font-weight: bold;
+		  cursor: pointer;
+		  z-index: 9999;
+		  transition: background-color 0.3s ease;
+		  display: none;
+		}
+		
+		.contador-estrella:hover {
+		  background-color: rgb(225, 151, 51);
+		}
+		
+		.btn.Volver {
+		  position: fixed;
+		  top: 10px;
+		  left: 20px;
+		  padding: 8px;
+		  background-color: rgb(243, 108, 108);
+		  color: white;
+		  text-align: center;
+		  display: flex;
+		  justify-content: center;
+		  align-items: center;
+		  font-size: 18px;
+		  font-weight: bold;
+		  cursor: pointer;
+		  z-index: 9999;
+		  border-radius: 12px;
+		  transition: background-color 0.3s ease;
+		}
+		
+		.btn.Volver:hover {
+		  background-color: rgb(226, 80, 80);
+		}
+		
+		.btn.Volver .arrow {
+		  display: inline-block;
+		  margin-right: 5px;
+		}
+		</style>
+    <!-- Wrapper -->
+    <div id="wrapper">
+      <!-- Header -->
+      <header id="header" class="alt">
+        <span class="logo"
+          ><img src="images/atomo.png" alt="Átomo" width="100px"
+        /></span>
+        <h1>Desintegración Radiactiva</h1>
+
+        <p>
+          Para comenzar, ponle nombre a tu propio átomo y elige un avatar que
+          representará a los neutrones y protones de tu átomo personalizado. A
+          medida que avances en la simulación, podrás ver cómo tu átomo y los de
+          los demás se someten a procesos de desintegración radiactiva.
+        </p>
+      </header>
+
+      <!-- Main -->
+
+      <div id="main">
+        <!-- First Section -->
+        <div id="main">
+          <!-- First Section -->
+          <section id="first" class="main special">
+            <header class="major">
+              <h2>Campo de Juego</h2>
+              <button class="button primary" onclick="openModal()">
+                Jugar
+              </button>
+            </header>
+            <div id="gameContainer">
+              <!-- Aquí se agregarán los círculos generados dinámicamente -->
+            </div>
+          </section>
+
+          <!-- Modal -->
+          <div id="modal" class="modal">
+            <div class="modal-content">
+              <span class="close" onclick="closeModal()">&times;</span>
+              <h3>Agregar Átomo</h3>
+              <form id="atomForm">
+                <label for="name">Tu Nombre:</label>
+                <input type="text" id="name" name="name" required />
+
+                <label for="avatar">Selecciona un Avatar:</label>
+                <select id="avatar" name="avatar">
+                  <!-- Generar dinámicamente las opciones del select -->
+                </select>
+
+                <!-- Vista previa del átomo seleccionado -->
+                <div id="previewContainer">
+                  <img
+                    id="previewImage"
+                    src="images/atomo.png"
+                    alt="Vista previa"
+                  />
+                </div>
+
+                <button type="submit" class="button primary">Agregar</button>
+              </form>
+            </div>
+          </div>
+          <!-- Asegúrate de incluir jQuery -->
+          <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+          <script>
+            // Función para cerrar el modal
+            function closeModal() {
+              $("#modal").hide();
+            }
+
+            // Función para enviar el formulario
+            function onSubmitForm(event) {
+              event.preventDefault();
+
+              // Obtener los valores del formulario
+              const name = $("#name").val();
+              const avatar = $("#avatar").val();
+
+              // Generar un número decimal aleatorio entre 1 y 3
+              const time = Math.random() * 2 + 1;
+
+              // Construir el objeto JSON con los datos del jugador
+              const playerData = {
+                name: name,
+                avatar: avatar,
+                time: time,
+              };
+
+              // Enviar los datos al servidor utilizando fetch
+              fetch(
+                "https://general-2e89b-default-rtdb.firebaseio.com/JuegoAtomos.json",
+                {
+                  method: "POST",
+                  body: JSON.stringify(playerData),
+                  headers: {
+                    "Content-Type": "application/json",
+                  },
+                }
+              )
+                .then((response) => response.json())
+                .then((data) => {
+                  console.log("Datos guardados:", data);
+                  // Aquí puedes agregar cualquier otra acción que desees después de guardar los datos.
+                })
+                .catch((error) => {
+                  console.error("Error al guardar los datos:", error);
+                });
+
+              // Cerrar el modal después de enviar los datos
+              closeModal();
+            }
+
+            // Agregar evento de escucha al formulario
+            $("#atomForm").on("submit", onSubmitForm);
+          </script>
+
+          <style>
+            #gameContainer {
+              position: relative;
+              width: 100%;
+              height: 300px; /* Ajusta el tamaño según tus necesidades */
+            }
+
+            #atomoImage {
+              position: absolute;
+              width: 100px; /* Ajusta el tamaño de la imagen */
+              height: 100px; /* Ajusta el tamaño de la imagen */
+              opacity: 1;
+              animation: fadeInOut 5s ease-in-out;
+            }
+            /* Estilos para el modal */
+            .modal {
+              display: none;
+              position: fixed;
+              z-index: 1;
+              left: 0;
+              top: 0;
+              width: 100%;
+              height: 100%;
+              background-color: rgba(0, 0, 0, 0.7);
+              display: flex;
+              align-items: center;
+              justify-content: center;
+            }
+
+            .modal-content {
+              background-color: #fefefe;
+              padding: 20px;
+              border: 1px solid #888;
+              max-width: 80%;
+              max-height: 80%;
+              overflow-y: auto;
+            }
+
+            /* Estilos para el formulario y el select */
+            #atomForm {
+              display: flex;
+              flex-direction: column;
+              align-items: center;
+            }
+
+            label {
+              margin-bottom: 5px;
+            }
+
+            input[type="text"] {
+              margin-bottom: 10px;
+              padding: 5px;
+            }
+
+            /* Estilos para la vista previa del átomo seleccionado */
+            #previewContainer {
+              display: flex;
+              justify-content: center;
+              align-items: center;
+              margin-top: 10px;
+            }
+
+            #previewImage {
+              width: 80px; /* Tamaño más pequeño para la vista previa */
+              height: 80px; /* Tamaño más pequeño para la vista previa */
+            }
+          </style>
+          <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+          <script>
+            // Datos de los átomos con sus nombres y rutas de imagen
+            const atomos = [
+              { nombre: "Clásico", imagen: "images/atomo.png" },
+              { nombre: "Friki", imagen: "images/atomo3.png" },
+              { nombre: "Superhéroe", imagen: "images/atomo4.png" },
+              { nombre: "Alienígena", imagen: "images/atomo5.png" },
+              { nombre: "Ninja", imagen: "images/atomo6.png" },
+              { nombre: "Robot", imagen: "images/atomo7.png" },
+            ];
+
+            // Generar dinámicamente las opciones del select con las vistas previas y nombres graciosos
+            const select = document.getElementById("avatar");
+            atomos.forEach((atomo) => {
+              const option = document.createElement("option");
+              option.value = atomo.imagen;
+              option.textContent = atomo.nombre;
+              select.appendChild(option);
+            });
+
+            // Función para actualizar la vista previa del átomo seleccionado
+            const previewImage = document.getElementById("previewImage");
+            select.addEventListener("change", function () {
+              const selectedAtom = atomos.find(
+                (atomo) => atomo.imagen === select.value
+              );
+              previewImage.src = selectedAtom
+                ? selectedAtom.imagen
+                : "images/atomo.png";
+            });
+
+            function getRandomNumber(min, max) {
+              return Math.random() * (max - min) + min;
+            }
+
+            function createAtomoImage(avatarUrl, playerName) {
+              const atomoImage = document.createElement("img");
+              atomoImage.id = "atomoImage";
+              // Generar un número aleatorio del 1 al 7
+              const randomNum = Math.floor(Math.random() * 7) + 1;
+
+              // Construir el nombre de la imagen
+              const imageName = `images/atomo${randomNum}.png`;
+
+              // Asignar la imagen a la variable atomoImage.src si avatarUrl no está definido o es falso (falsy)
+              atomoImage.src = avatarUrl || imageName;
+
+              atomoImage.style.left = `${getRandomNumber(0, 90)}%`;
+              atomoImage.style.top = `${getRandomNumber(0, 90)}%`;
+              document.getElementById("gameContainer").appendChild(atomoImage);
+
+              const nameTag = document.createElement("div");
+              nameTag.classList.add("name-tag");
+              nameTag.textContent = playerName || "";
+              atomoImage.appendChild(nameTag);
+
+              const changeImageTimeout = getRandomNumber(1000, 3000); // Entre 1 y 3 segundos
+              setTimeout(() => {
+                atomoImage.src = "images/atomo1.png";
+                setTimeout(() => {
+                  atomoImage.style.animation = "fadeOut 3s ease-in-out";
+                  setTimeout(() => {
+                    atomoImage.remove();
+                  }, 1000);
+                }, 100); // 1 segundo para mostrar la imagen "atomo1.png"
+              }, changeImageTimeout);
+              obtenerDatosYConstruirTabla();
+            }
+
+            // Función para agregar un átomo con el nombre del jugador y el avatar seleccionado
+            document
+              .getElementById("atomForm")
+              .addEventListener("submit", function (event) {
+                event.preventDefault();
+                const playerName = document.getElementById("name").value;
+                const selectedAvatar = select.value;
+                createAtomoImage(selectedAvatar, playerName);
+                closeModal();
+              });
+
+            // Función para abrir el modal
+            function openModal() {
+              const modal = document.getElementById("modal");
+              modal.style.display = "block";
+            }
+
+            // Función para cerrar el modal
+            function closeModal() {
+              const modal = document.getElementById("modal");
+              modal.style.display = "none";
+            }
+
+            // Crear la imagen de átomo cada 7 segundos
+            setInterval(createAtomoImage, 5000);
+          </script>
+        </div>
+      </div>
+
+      <!-- Footer -->
+      <footer id="footer">
+        <section>
+          <h2>
+            Transformación del átomo de Polonio en Plomo por desintegración
+            radioactiva
+          </h2>
+          <p>
+            La desintegración radioactiva es un proceso natural en el cual los
+            núcleos atómicos inestables emiten partículas o radiación para
+            alcanzar una configuración más estable. El polonio es un elemento
+            radiactivo altamente inestable, y uno de los isótopos más conocidos
+            es el polonio-210. Con el tiempo, el núcleo de polonio-210 se
+            transforma en plomo-206 a través de una serie de desintegraciones
+            radioactivas.
+          </p>
+          <p>
+            El proceso comienza cuando un núcleo de polonio-210 emite una
+            partícula alfa (núcleo de helio) para convertirse en un núcleo de
+            plomo-206. Esta emisión de partículas alfa reduce el número de
+            protones y neutrones en el núcleo, lo que resulta en un isótopo de
+            plomo más estable.
+          </p>
+          <p>
+            La desintegración radioactiva del polonio a plomo es un proceso
+            continuo y se produce a una tasa específica conocida como vida media
+            del isótopo. La vida media es el tiempo necesario para que la mitad
+            de una cantidad dada de polonio-210 se desintegre y se convierta en
+            plomo-206.
+          </p>
+          <p>
+            Este fenómeno es de suma importancia en el estudio de la
+            radiactividad y tiene aplicaciones en diversas áreas, desde la
+            datación geológica hasta la utilización de isótopos radiactivos en
+            la medicina y la industria.
+          </p>
+          <ul class="actions">
+            <li>
+              <a
+                href="https://en.wikipedia.org/wiki/Radioactive_decay"
+                class="button"
+                >Leer más</a
+              >
+            </li>
+          </ul>
+        </section>
+        <section>
+          <h2>Tabla de Ganadores</h2>
+          <table>
+            <thead>
+              <tr>
+                <th>Nombre</th>
+
+                <th>Tiempo (s)</th>
+              </tr>
+            </thead>
+            <tbody id="ganadoresTableBody">
+              <!-- Las filas de la tabla se generarán dinámicamente aquí -->
+            </tbody>
+          </table>
+
+          <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+          <script>
+			// Función para obtener los datos de los ganadores desde la API y construir la tabla
+			function obtenerDatosYConstruirTabla() {
+				// URL de la API donde se encuentran los datos
+				const apiUrl = "https://general-2e89b-default-rtdb.firebaseio.com/JuegoAtomos.json";
+		
+				// Realizar la solicitud GET a la API
+				fetch(apiUrl)
+					.then((response) => response.json())
+					.then((data) => {
+						// Convertir los datos en un array de objetos para poder ordenarlos
+						const ganadoresArray = Object.entries(data).map(([key, value]) => ({
+							id: key,
+							...value
+						}));
+		
+						// Ordenar el array de ganadores por el tiempo en orden descendente (mayor a menor)
+						ganadoresArray.sort((a, b) => b.time - a.time);
+		
+						// Limpiar la tabla antes de agregar nuevos datos
+						$("#ganadoresTableBody").empty();
+		
+						// Construir las filas de la tabla con los datos obtenidos
+						ganadoresArray.forEach((jugador) => {
+							// Crear una nueva fila en la tabla
+							const row = document.createElement("tr");
+		
+							// Agregar las celdas con los datos del jugador
+							const nameCell = document.createElement("td");
+							nameCell.textContent = jugador.name;
+							row.appendChild(nameCell);
+		
+							const timeCell = document.createElement("td");
+							timeCell.textContent = jugador.time;
+							row.appendChild(timeCell);
+		
+							// Agregar la fila a la tabla
+							$("#ganadoresTableBody").append(row);
+						});
+					})
+					.catch((error) => {
+						console.error("Error al obtener los datos:", error);
+					});
+			}
+		
+			// Llamar a la función para obtener los datos y construir la tabla al cargar la página
+			obtenerDatosYConstruirTabla();
+			setInterval(obtenerDatosYConstruirTabla, 2000);
+		</script>
+		
+          <ul class="icons">
+            <li>
+              <a
+                href="https://www.facebook.com/profile.php?id=100014437541021"
+                class="icon brands fa-facebook-f alt"
+                ><span class="label">Facebook</span></a
+              >
+            </li>
+            <li>
+              <a
+                href="https://www.instagram.com/carl_os34/"
+                class="icon brands fa-instagram alt"
+                ><span class="label">Instagram</span></a
+              >
+            </li>
+          </ul>
+        </section>
+        <p class="copyright">
+          &copy; Simulador. Design:
+          <a href="https://angulocarlos.com">Carlos Angulo</a>.
+        </p>
+      </footer>
+    </div>
+
+    <!-- Scripts -->
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/js/jquery.scrollex.min.js"></script>
+    <script src="assets/js/jquery.scrolly.min.js"></script>
+    <script src="assets/js/browser.min.js"></script>
+    <script src="assets/js/breakpoints.min.js"></script>
+    <script src="assets/js/util.js"></script>
+    <script src="assets/js/main.js"></script>
+	<script>
+				
+        let url = 'https://general-2e89b-default-rtdb.firebaseio.com/index.json';
+        let contador = 0;
+        let contador1 = 0;
+
+        fetch(url)
+        .then(response => response.json())
+        .then(data => {
+            contador = data.contador;
+            contador1 = data.contador1;
+            document.getElementById('contador').innerHTML = contador;
+            document.getElementById('contador1').innerHTML = contador1;
+            aumentar(); // Llama a la función para incrementar el contador en 1
+        })
+        .catch(error => console.error(error));
+
+        function aumentar() {
+        contador++;
+        document.getElementById('contador').innerHTML = contador;
+        fetch(url, {
+            method: 'PUT',
+            body: JSON.stringify({ contador: contador, contador1: contador1 })
+        })
+            .then(response => console.log(response))
+            .catch(error => console.error(error));
+        }
+        function redireccionar() {
+        window.location.href = 'https://angulocarlos.com/';
+        }
+
+		
+				</script>
+  </body>
+</html>
