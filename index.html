@@ -7,6 +7,7 @@
     <title>Carlos Angulo - Portafolio</title>
     <link rel="icon" type="image/png" href="fractal.png" />
     <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="modal.css" />
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
@@ -21,62 +22,7 @@
     />
   </head>
   <body>
-    <style>/* Estilos para modal y contenido */
-      .modal {
-        display: none;
-        position: fixed;
-        z-index: 9999;
-        left: 0;
-        top: 0;
-        width: 100%;
-        height: 100%;
-        overflow: auto;
-        background-color: rgba(0, 0, 0, 0.5);
-      }
-      
-      .modal-content {
-        background-color: #f8f8f8;
-        padding: 20px;
-        border: 1px solid #888;
-        border-radius: 10px;
-        width: 80%;
-        max-width: 600px;
-        margin: 0 auto;
-      }
-      /* Estilos para imagen y descripción */
-      .slide img {
-        max-width: 50%;
-        height: auto;
-        display: block;
-        margin-left: auto;
-        margin-right: auto;
-      }
-      
-      .slide .caption {
-        margin-top: 10px;
-      }
-      
-      /* Estilos responsivos */
-      @media (max-width: 600px) {
-        .modal-content {
-          width: 90%;
-        }
-      }
-      
-      .close {
-        color: #aaa;
-        float: right;
-        font-size: 28px;
-        font-weight: bold;
-        cursor: pointer;
-      }
-      
-      .close:hover,
-      .close:focus {
-        color: black;
-        text-decoration: none;
-        cursor: pointer;
-      }</style>
+    
     <button class="btn info" onclick="openModal()">
       <div id="Volver"><i class="fas fa-user"></i> Info</div>
     </button>
@@ -123,17 +69,17 @@
 
     <div class="floating-buttons">
       <button id="button1">
-        <a href="https://angulocarlos.com/Resume/">
+        <a href="./Resume/">
           <i class="fas fa-file-pdf"></i> Hoja de vida
         </a>
       </button>
       <button id="button2">
-        <a href="https://angulocarlos.com/agenda/">
+        <a href="./agenda/">
           <i class="fas fa-calendar-alt"></i> Agenda
         </a>
       </button>
       <button id="button3">
-        <a href="https://angulocarlos.com/Exoplanetas/">
+        <a href="./Exoplanetas/">
           <i class="fas fa-globe"></i> Exoplanetas
         </a>
       </button>
@@ -143,7 +89,7 @@
         </a>
       </button>
       <button id="button5">
-        <a href="https://angulocarlos.com/SimuladorEF/">
+        <a href="./SimuladorEF/">
           <i class="fas fa-cogs"></i> Simulador EF
         </a>
       </button>
@@ -153,30 +99,13 @@
         </a>
       </button>
       <button id="button7">
-        <a href="https://angulocarlos.com/desintegracion/">
+        <a href="./desintegracion/">
           <i class="fas fa-atom"></i> Juego DR
         </a>
       </button>
     </div>
 
     <script src="app.js"></script>
-    <script>function openModal() {
-      // Ocultar los botones al abrir el modal
-      var buttons = document.getElementsByClassName("floating-buttons")[0];
-      buttons.style.display = "none";
-
-      // Mostrar el modal
-      document.getElementById("myModal").style.display = "block";
-    }
-
-    function closeModal() {
-      // Mostrar los botones al cerrar el modal
-      var buttons = document.getElementsByClassName("floating-buttons")[0];
-      buttons.style.display = "flex";
-
-      // Cerrar el modal
-      document.getElementById("myModal").style.display = "none";
-    }
-    </script>
+    <script src="modal.js"></script>
   </body>
 </html>

@@ -25,15 +25,15 @@ let url = "https://general-2e89b-default-rtdb.firebaseio.com/index.json";
       }
 
       document.getElementById("button1").addEventListener("click", function () {
-        window.location.href = "https://angulocarlos.com/Resume/";
+        window.location.href = "./Resume/";
       });
 
       document.getElementById("button2").addEventListener("click", function () {
-        window.location.href = "https://angulocarlos.com/agenda/";
+        window.location.href = "./agenda/";
       });
 
       document.getElementById("button3").addEventListener("click", function () {
-        window.location.href = "https://angulocarlos.com/Exoplanetas/";
+        window.location.href = "./Exoplanetas/";
       });
 
       document.getElementById("button4").addEventListener("click", function () {
@@ -41,7 +41,7 @@ let url = "https://general-2e89b-default-rtdb.firebaseio.com/index.json";
       });
 
       document.getElementById("button5").addEventListener("click", function () {
-        window.location.href = "https://angulocarlos.com/SimuladorEF/";
+        window.location.href = "./SimuladorEF/";
       });
 
       document.getElementById("button6").addEventListener("click", function () {
@@ -49,7 +49,7 @@ let url = "https://general-2e89b-default-rtdb.firebaseio.com/index.json";
       });
 
       document.getElementById("button7").addEventListener("click", function () {
-        window.location.href = "https://angulocarlos.com/desintegracion/";
+        window.location.href = "./desintegracion/";
       });
 
       
