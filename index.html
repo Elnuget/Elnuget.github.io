@@ -22,7 +22,6 @@
     />
   </head>
   <body>
-    
     <button class="btn info" onclick="openModal()">
       <div id="Volver"><i class="fas fa-user"></i> Info</div>
     </button>
@@ -69,19 +68,18 @@
 
     <div class="floating-buttons">
       <button id="button1">
-        <a href="./Resume/">
-          <i class="fas fa-file-pdf"></i> Hoja de vida
+        <a href="./Resume/"> <i class="fas fa-file-pdf"></i> Hoja de vida </a>
+      </button>
+      <button id="button8">
+        <a href="./Clases/">
+          <i class="fas fa-chalkboard"></i> Clases Particulares
         </a>
       </button>
       <button id="button2">
-        <a href="./agenda/">
-          <i class="fas fa-calendar-alt"></i> Agenda
-        </a>
+        <a href="./agenda/"> <i class="fas fa-calendar-alt"></i> Agenda </a>
       </button>
       <button id="button3">
-        <a href="./Exoplanetas/">
-          <i class="fas fa-globe"></i> Exoplanetas
-        </a>
+        <a href="./Exoplanetas/"> <i class="fas fa-globe"></i> Exoplanetas </a>
       </button>
       <button id="button4">
         <a href="https://roadtrt.com/">
@@ -89,9 +87,7 @@
         </a>
       </button>
       <button id="button5">
-        <a href="./SimuladorEF/">
-          <i class="fas fa-cogs"></i> Simulador EF
-        </a>
+        <a href="./SimuladorEF/"> <i class="fas fa-cogs"></i> Simulador EF </a>
       </button>
       <button id="button6">
         <a href="https://friedrichpre.com/">
@@ -99,14 +95,17 @@
         </a>
       </button>
       <button id="button7">
-        <a href="./desintegracion/">
-          <i class="fas fa-atom"></i> Juego DR
-        </a>
+        <a href="./desintegracion/"> <i class="fas fa-atom"></i> Juego DR </a>
       </button>
     </div>
 
     <script src="app.js"></script>
     <script src="modal.js"></script>
-    <script src="botones.js"> </script>
+    <script src="botones.js"></script>
+    <script>
+      document.getElementById("button8").addEventListener("click", function () {
+        window.location.href = "./Clases/";
+      });
+    </script>
   </body>
 </html>

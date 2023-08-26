@@ -25,3 +25,4 @@ document.getElementById("button1").addEventListener("click", function () {
   document.getElementById("button7").addEventListener("click", function () {
     window.location.href = "./desintegracion/";
   });
+  
