@@ -1,58 +1,29 @@
 let url = "https://general-2e89b-default-rtdb.firebaseio.com/index.json";
-      let contador = 0;
-      let contador1 = 0;
+let contador = 0;
+let contador1 = 0;
 
-      fetch(url)
-        .then((response) => response.json())
-        .then((data) => {
-          contador = data.contador;
-          contador1 = data.contador1;
-          document.getElementById("contador").innerHTML = contador;
-          document.getElementById("contador1").innerHTML = contador1;
-          aumentar(); // Llama a la función para incrementar el contador en 1
-        })
-        .catch((error) => console.error(error));
+fetch(url)
+  .then((response) => response.json())
+  .then((data) => {
+    contador = data.contador;
+    contador1 = data.contador1;
+    document.getElementById("contador").innerHTML = contador;
+    document.getElementById("contador1").innerHTML = contador1;
+    aumentar(); // Llama a la función para incrementar el contador en 1
+  })
+  .catch((error) => console.error(error));
 
-      function aumentar() {
-        contador++;
-        document.getElementById("contador").innerHTML = contador;
-        fetch(url, {
-          method: "PUT",
-          body: JSON.stringify({ contador: contador, contador1: contador1 }),
-        })
-          .then((response) => console.log(response))
-          .catch((error) => console.error(error));
-      }
+function aumentar() {
+  contador++;
+  document.getElementById("contador").innerHTML = contador;
+  fetch(url, {
+    method: "PUT",
+    body: JSON.stringify({ contador: contador, contador1: contador1 }),
+  })
+    .then((response) => console.log(response))
+    .catch((error) => console.error(error));
+}
 
-      document.getElementById("button1").addEventListener("click", function () {
-        window.location.href = "./Resume/";
-      });
-
-      document.getElementById("button2").addEventListener("click", function () {
-        window.location.href = "./agenda/";
-      });
-
-      document.getElementById("button3").addEventListener("click", function () {
-        window.location.href = "./Exoplanetas/";
-      });
-
-      document.getElementById("button4").addEventListener("click", function () {
-        window.location.href = "https://roadtrt.com/";
-      });
-
-      document.getElementById("button5").addEventListener("click", function () {
-        window.location.href = "./SimuladorEF/";
-      });
-
-      document.getElementById("button6").addEventListener("click", function () {
-        window.location.href = "https://friedrichpre.com/";
-      });
-
-      document.getElementById("button7").addEventListener("click", function () {
-        window.location.href = "./desintegracion/";
-      });
-
-      
 var w = window.innerWidth;
 var h = window.innerHeight;
 
@@ -83,15 +54,15 @@ function reset() {
   var quads = [];
   var q = new Q(c.x - c.radius, c.y - c.radius, c.radius * 2, c.radius * 2);
   var qs = q.split();
-  qs.forEach(function(q) {
+  qs.forEach(function (q) {
     var qs = q.split();
     qs[1].glow = true;
-    qs.forEach(function(q) {
+    qs.forEach(function (q) {
       var glow = q.glow != null;
       var qs = q.split();
-      qs.forEach(function(q) {
+      qs.forEach(function (q) {
         var qs = q.split();
-        qs.forEach(function(q) {
+        qs.forEach(function (q) {
           q.glow = Boolean(glow); // && PRNG.random()>.5;
           quads.push(q);
         });
@@ -110,7 +81,7 @@ function reset() {
   var buildings = [];
 
   ctx.beginPath();
-  quads.forEach(function(q, i) {
+  quads.forEach(function (q, i) {
     var cq = new Point(q.x + q.w / 2, q.y + q.h / 2);
 
     if (!circleContainsPoint(cq, c)) return;
@@ -119,7 +90,7 @@ function reset() {
 
     var offset = 4;
     if (q.area < Math.pow(h / 30, 2)) {
-      q.split().forEach(function(q) {
+      q.split().forEach(function (q) {
         ps = offsetPolygon(q.points.concat(), offset); //q.points;//
         q.points = ps;
         ctx.moveTo(ps[0].x, ps[0].y);
@@ -133,7 +104,7 @@ function reset() {
     }
 
     if (q.area < Math.pow(h / 9, 2)) {
-      q.split().forEach(function(q) {
+      q.split().forEach(function (q) {
         ps = offsetPolygon(q.points.concat(), offset);
         q.points = ps;
         ctx.moveTo(ps[0].x, ps[0].y);
@@ -147,7 +118,7 @@ function reset() {
     }
 
     if (q.area < Math.pow(h / 8, 2)) {
-      q.split().forEach(function(q) {
+      q.split().forEach(function (q) {
         var ps = offsetPolygon(q.points.concat(), offset);
         q.points = ps;
         stairs.push(q);
@@ -179,12 +150,12 @@ function reset() {
   ctx.shadowBlur = 25;
   ctx.shadowColor = "#FFF";
   ctx.fillRect(-w, -h, w * 2, h * 2);
-  stairs.forEach(function(r, i) {
+  stairs.forEach(function (r, i) {
     r.stairs(ctx, i);
   });
   ctx.restore();
 
-  landuse.forEach(function(q, id) {
+  landuse.forEach(function (q, id) {
     var i;
     var inc = 10;
     var tot = 10;
@@ -243,7 +214,7 @@ function reset() {
     ctx.restore();
   });
 
-  buildings.forEach(function(q) {
+  buildings.forEach(function (q) {
     ctx.globalAlpha = 1;
     ctx.globalAlpha = 0.15;
     ctx.fillStyle = "#FFF";
@@ -254,7 +225,7 @@ function reset() {
     ctx.save();
     for (var i = 0; i < tot; i += inc) {
       ctx.translate(-inc, -inc);
-      ctx.globalAlpha = Math.pow(i / tot * 0.75, 2);
+      ctx.globalAlpha = Math.pow((i / tot) * 0.75, 2);
       // ctx.shadowColor = i%10 == 0 ? "#000" : "#DDD";
       q.draw(ctx);
       ctx.stroke();
@@ -268,7 +239,7 @@ function reset() {
   imgData.data = noise(32, imgData.data, w, h);
   ctx.putImageData(imgData, 0, 0);
 
-  landuse.forEach(function(q, id) {
+  landuse.forEach(function (q, id) {
     if (!Boolean(q.glow)) return;
     if (id % 3 == 0) {
       ctx.save();
@@ -293,16 +264,12 @@ function reset() {
   ctx.globalAlpha = 1;
   ctx.fillStyle = "#000";
   ctx.font = "12px verdana";
-  ctx.fillText(
-    "",
-    w / 2 - ctx.measureText("click to reset").width / 2,
-    h - 16
-  );
+  ctx.fillText("", w / 2 - ctx.measureText("click to reset").width / 2, h - 16);
 }
 
 function drawPath(ctx, pts) {
   ctx.beginPath();
-  pts.forEach(function(p) {
+  pts.forEach(function (p) {
     ctx.lineTo(p.x, p.y);
   });
   ctx.closePath();
@@ -310,7 +277,7 @@ function drawPath(ctx, pts) {
 
 //////////////////////////////////////////////////////////////
 
-var Q = function(x, y, w, h) {
+var Q = function (x, y, w, h) {
   this.x = x;
   this.y = y;
   this.w = w;
@@ -319,13 +286,13 @@ var Q = function(x, y, w, h) {
     new Point(this.x, this.y),
     new Point(this.x + this.w, this.y),
     new Point(this.x + this.w, this.y + this.h),
-    new Point(this.x, this.y + this.h)
+    new Point(this.x, this.y + this.h),
   ];
   this.area = this.w * this.h;
 };
 
 Q.prototype = {
-  draw: function(ctx) {
+  draw: function (ctx) {
     ctx.beginPath();
     ctx.moveTo(this.x, this.y);
     ctx.lineTo(this.x + this.w, this.y);
@@ -333,7 +300,7 @@ Q.prototype = {
     ctx.lineTo(this.x, this.y + this.h);
     ctx.closePath();
   },
-  split: function() {
+  split: function () {
     if (this.w * this.h < 100) return [];
     var ratio = Math.max(this.w, this.h) / Math.min(this.w, this.h);
     if (ratio < 0.25 || ratio > 5) return [];
@@ -353,10 +320,10 @@ Q.prototype = {
       new Q(x, y, w, h),
       new Q(x + w, y, w2, h),
       new Q(x, y + h, w, h2),
-      new Q(x + w, y + h, w2, h2)
+      new Q(x + w, y + h, w2, h2),
     ];
   },
-  stairs: function(ctx) {
+  stairs: function (ctx) {
     ctx.fillStyle = "#000";
 
     var p0, p1, p2;
@@ -368,7 +335,9 @@ Q.prototype = {
     var a = 0;
     var w = this.w;
     var step = 10 / this.h;
-    var x0 = p0.x, y0 = p0.y, y1;
+    var x0 = p0.x,
+      y0 = p0.y,
+      y1;
 
     for (var i = 0; i < 1; i += step) {
       x0 += 3;
@@ -392,72 +361,72 @@ Q.prototype = {
 
       ctx.translate(0, step * 0.5);
     }
-  }
+  },
 };
 
 //////////////////////////////////////////////////////////////
 
-var Point = function(x, y) {
+var Point = function (x, y) {
   this.x = x || 0;
   this.y = y || 0;
   return this;
 };
 Point.prototype = {
-  add: function(p) {
+  add: function (p) {
     this.x += p.x;
     this.y += p.y;
     return this;
   },
-  sub: function(p) {
+  sub: function (p) {
     this.x -= p.x;
     this.y -= p.y;
     return this;
   },
-  clone: function() {
+  clone: function () {
     return new Point(this.x, this.y);
   },
-  copy: function(p) {
+  copy: function (p) {
     this.x = p.x;
     this.y = p.y;
     return this;
   },
-  set: function(x, y) {
+  set: function (x, y) {
     this.x = x;
     this.y = y;
     return this;
   },
-  length: function() {
+  length: function () {
     return Math.sqrt(this.x * this.x + this.y * this.y);
   },
-  normalize: function(value) {
+  normalize: function (value) {
     var l = this.length();
     this.x /= l;
     this.y /= l;
     if (value != null) this.multiplyScalar(value);
     return this;
   },
-  multiplyScalar: function(value) {
+  multiplyScalar: function (value) {
     this.x *= value;
     this.y *= value;
     return this;
   },
-  direction: function(other) {
+  direction: function (other) {
     return other.clone().sub(this).normalize();
   },
-  negate: function() {
+  negate: function () {
     this.x *= -1;
     this.y *= -1;
     return this;
   },
-  dot: function(p) {
+  dot: function (p) {
     return this.x * p.x + this.y * p.y;
   },
-  equals: function(other) {
+  equals: function (other) {
     return this.x == other.x && this.y == other.y;
   },
-  midpoint: function(other) {
+  midpoint: function (other) {
     return new Point((this.x + other.x) / 2, (this.y + other.y) / 2);
-  }
+  },
 };
 
 //////////////////////////////////////////////////////////////
@@ -502,14 +471,14 @@ function offsetPolygon(points, offset) {
     var l1 = distance(cur, pre);
     var n1 = new Point(
       -((cur.y - pre.y) / l1) * offset,
-      (cur.x - pre.x) / l1 * offset
+      ((cur.x - pre.x) / l1) * offset
     );
 
     //does the same for the : current -> next edge
     var l2 = distance(cur, nex);
     var n2 = new Point(
       -((nex.y - cur.y) / l2) * offset,
-      (nex.x - cur.x) / l2 * offset
+      ((nex.x - cur.x) / l2) * offset
     );
 
     //and create 2 points at both ends of the edge to obtain a parallel line
@@ -572,7 +541,7 @@ var PRNG = {
   m: 0x7fffffff /* 2**31 - 1 */,
   randomnum: 1,
   div: 1 / 0x7fffffff,
-  nextlongrand: function(seed) {
+  nextlongrand: function (seed) {
     var lo, hi;
     lo = this.a * (seed & 0xffff);
     hi = this.a * (seed >> 16);
@@ -588,13 +557,13 @@ var PRNG = {
     }
     return lo;
   },
-  random: function() /* return next random number */ {
+  random: function () /* return next random number */ {
     this.randomnum = this.nextlongrand(this.randomnum);
     return this.randomnum * this.div;
   },
-  setSeed: function(value) {
+  setSeed: function (value) {
     this.randomnum = value <= 0 ? 1 : value;
-  }
+  },
 };
 
 //////////////////////////////////////////////////////////////
